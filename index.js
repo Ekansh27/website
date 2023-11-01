@@ -2,7 +2,7 @@ function changeValues(){
     var slider = document.getElementById("one");
 
     slider.value = 98;
-}
+} 
 
 /*var footerQuotes = ["Tabs over spaces.", "Not crazy, opposite.", "Parantheses start in the same line as the function declaration.", "Unix-like operating systems. Period.", "Honestly, either vim or emacs works."];
 
