@@ -241,9 +241,9 @@ a {
 
 /* Need this for image */
 #picture > img{
-	width: 60vh;
-	height: 60vh;
-	border-radius: 50%;
+	width: 350px;
+	height: 430px;
+	border-radius: 10%;
 }
 
 #about{
