@@ -241,8 +241,8 @@ a {
 
 /* Need this for image */
 #picture > img{
-	width: 400px;
-	height: 340px;
+	width: 380px;
+	height: 350px;
 	border-radius: 10%;
 }
 
