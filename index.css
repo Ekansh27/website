@@ -438,6 +438,7 @@ ul li::before{
 	align-items: center;
 	justify-content: space-between;
 	gap: 2vw;
+	box-sizing: border-box;
 	width: 70vw;
 	margin: 4.5vh auto 0;
 	text-align: left;
