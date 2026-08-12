@@ -329,22 +329,32 @@ ul li::before{
 	font-weight: lighter;
 }
 
-.exp-item{
-	display: inline-flex;
-	height: auto;
+.exp-grid{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 5vh 3vw;
 	width: 70vw;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.exp-item{
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	width: 100%;
 }
 
 .exp-pic{
-	width: 50%;
-	text-align: right;
-	margin: 2vh;
+	width: 100%;
+	text-align: left;
+	margin: 0 0 1.5vh;
 }
 
 .exp-desc{
-	width: 30%;
+	width: 100%;
 	text-align: left;
-	margin: 2vh;
+	margin: 0;
 	font-size: 1.6vh;
 }
 
@@ -361,9 +371,14 @@ ul li::before{
 }
 
 .desc-image{
-	height: 16vw;
-	width: 24vw;
-	margin-right: 2vw;
+	width: 240px;
+	height: 170px;
+	object-fit: contain;
+	border-radius: 25px;
+}
+
+.desc-image.photo{
+	object-fit: cover;
 }
 
 .desc-location{
@@ -384,56 +399,53 @@ ul li::before{
 .project-card{
 	display: flex;
 	flex-direction: column;
-	background: #ffffff;
-	border: 1px solid rgba(54, 69, 79, 0.08);
-	border-radius: 14px;
-	padding: clamp(1.4rem, 1.9vw, 2.4rem);
-	box-shadow: 0 1px 2px rgba(54, 69, 79, 0.04);
-	transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+	background: white;
+	border-radius: 0.5vw;
+	padding: 3vh 1.8vw;
+	box-shadow: 0 0.35vh 0.35vh rgba(0, 0, 0, 0.3);
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .project-card:hover{
-	transform: translateY(-5px);
-	border-color: var(--contrast);
-	box-shadow: 0 14px 30px rgba(54, 69, 79, 0.10);
+	transform: translateY(-0.6vh);
+	box-shadow: 0 1vh 1.2vh rgba(0, 0, 0, 0.2);
 }
 
 .project-name{
-	font-family: "ms-extrabold", sans-serif;
-	color: #1a5748;
-	font-size: clamp(1.1rem, 1.45vw, 1.55rem);
-	letter-spacing: -0.01em;
-	line-height: 1.2;
+	font-weight: bold;
+	color: var(--font);
+	font-size: 1.4vw;
 }
 
 .project-desc{
-	font-family: "ibm", sans-serif;
-	color: #5b6b73;
-	font-size: clamp(0.9rem, 1vw, 1.05rem);
-	line-height: 1.65;
-	margin: 1.1rem 0 0;
+	color: var(--font);
+	font-weight: lighter;
+	font-size: 1vw;
+	line-height: 1.55;
+	margin: 1.5vh 0 0;
 }
 
 .project-tags{
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.5rem;
+	gap: 0.5vw;
 	margin-top: auto;
-	padding-top: 1.6rem;
+	padding-top: 2.5vh;
 }
 
 .tag{
-	font-family: "ibm", sans-serif;
-	font-size: clamp(0.7rem, 0.8vw, 0.8rem);
-	color: #6b7a82;
-	background: #eef0f4;
-	padding: 0.35rem 0.7rem;
-	border-radius: 999px;
+	font-size: 0.85vw;
+	color: grey;
+	background: var(--bg);
+	padding: 0.6vh 0.7vw;
+	border-radius: 0.4vw;
 	white-space: nowrap;
 }
 
 /* PUBLICATION */
 .publication-card{
+	position: relative;
+	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -442,42 +454,50 @@ ul li::before{
 	width: 70vw;
 	margin: 4.5vh auto 0;
 	text-align: left;
-	background: #ffffff;
-	border: 1px solid rgba(54, 69, 79, 0.08);
-	border-left: 3px solid var(--contrast);
-	border-radius: 14px;
-	padding: clamp(1.6rem, 2.2vw, 2.6rem);
+	background: white;
+	border-radius: 0.5vw;
+	padding: 3.5vh 2vw 3.5vh 2.4vw;
+	box-shadow: 0 0.35vh 0.35vh rgba(0, 0, 0, 0.3);
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Echoes the gradient block on the fun-fact cards */
+.publication-card::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 0.5vw;
+	background: linear-gradient(180deg, hsla(28, 77%, 49%, 1) 0%, hsla(42, 72%, 53%, 1) 100%);
+}
+
 .publication-card:hover{
-	transform: translateY(-3px);
-	box-shadow: 0 14px 30px rgba(54, 69, 79, 0.10);
+	transform: translateY(-0.6vh);
+	box-shadow: 0 1vh 1.2vh rgba(0, 0, 0, 0.2);
 }
 
 .publication-label{
-	font-family: "ibm", sans-serif;
-	font-size: clamp(0.65rem, 0.75vw, 0.78rem);
+	font-size: 0.8vw;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	color: #a87e1e;
+	color: grey;
 }
 
 .publication-name{
-	font-family: "ms-extrabold", sans-serif;
+	font-weight: bold;
 	color: var(--font);
-	font-size: clamp(1.15rem, 1.6vw, 1.7rem);
-	letter-spacing: -0.01em;
-	margin-top: 0.5rem;
+	font-size: 1.4vw;
+	margin-top: 0.8vh;
 }
 
 .publication-desc{
-	font-family: "ibm", sans-serif;
-	color: #5b6b73;
-	font-size: clamp(0.9rem, 1vw, 1.05rem);
-	line-height: 1.65;
-	margin: 0.9rem 0 0;
-	max-width: 46rem;
+	color: var(--font);
+	font-weight: lighter;
+	font-size: 1vw;
+	line-height: 1.55;
+	margin: 1.5vh 0 0;
+	max-width: 46vw;
 }
 
 .publication-venue{
@@ -485,30 +505,51 @@ ul li::before{
 }
 
 .venue-tag{
-	font-family: "ibm", sans-serif;
-	font-size: clamp(0.8rem, 0.95vw, 1rem);
+	display: inline-block;
+	font-size: 0.95vw;
 	font-weight: bold;
 	letter-spacing: 0.05em;
-	color: #a87e1e;
-	background: rgba(241, 186, 85, 0.14);
-	border: 1px solid rgba(241, 186, 85, 0.4);
-	padding: 0.6rem 1.1rem;
-	border-radius: 10px;
+	color: var(--font);
+	background: var(--contrast);
+	padding: 1vh 1.1vw;
+	border-radius: 0.4vw;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.venue-tag:hover{
+	background: hsla(42, 72%, 53%, 1);
+	transform: translateY(-0.2vh);
+}
+
+.venue-tag:active{
+	transform: translateY(0);
+}
+
+.venue-tag:focus-visible{
+	outline: 2px solid var(--font);
+	outline-offset: 3px;
 }
 
 @media only screen and (max-width: 900px){
+	.exp-grid{
+		grid-template-columns: 1fr;
+		width: 86vw;
+	}
+
 	.projects-grid{
 		grid-template-columns: 1fr;
-		gap: 1.2rem;
+		gap: 2vh;
 		width: 86vw;
 	}
 
 	.publication-card{
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 1.2rem;
+		gap: 2vh;
 		width: 86vw;
-		margin-top: 1.2rem;
+		margin-top: 2vh;
 	}
 }
 
