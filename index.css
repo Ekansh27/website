@@ -321,7 +321,7 @@ ul li::before{
 
 #exp-subtitle{
 	font-family: "raleway-r", sans-serif;
-	text-align: right;
+	text-align: left;
 	display: inline-block;
 	width: 70vw;
 	font-size: 1.2vw;
@@ -343,13 +343,13 @@ ul li::before{
 
 #exp-title{
 	font-family: "raleway-r";
-	text-align: right;
+	text-align: left;
 	display: inline-flex;
 	width: 70vw;
 	height: auto;
 	font-size: 2.5vw;
 	padding: 0.1vh;
-	justify-content: flex-end;
+	justify-content: flex-start;
 }
 
 #exp{
@@ -618,10 +618,12 @@ a.project-card:hover::after{
 .subpage #trips-title{
 	justify-content: center;
 	text-align: center;
+	font-size: 2.1vw;
 }
 
 .subpage #trips-subtitle{
 	text-align: center;
+	font-size: 1vw;
 }
 
 /* Only four tiles, so centre the block instead of letting it hang off the top */
@@ -636,10 +638,10 @@ a.project-card:hover::after{
 /* Compact tiles sized to the flag, not full-width slabs */
 .trips-grid{
 	display: grid;
-	grid-template-columns: repeat(2, 30vw);
+	grid-template-columns: repeat(2, 25.5vw);
 	justify-content: center;
-	gap: 4vh 3vw;
-	margin: 4vh auto 0;
+	gap: 3.4vh 2.5vw;
+	margin: 3.4vh auto 0;
 }
 
 .trip-card{
@@ -649,7 +651,7 @@ a.project-card:hover::after{
 	text-align: center;
 	background: white;
 	border-radius: 0.5vw;
-	padding: 4.4vh 2vw;
+	padding: 3.7vh 1.7vw;
 	box-shadow: 0 0.35vh 0.35vh rgba(0, 0, 0, 0.3);
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -663,7 +665,7 @@ a.project-card:hover::after{
    get cropped (a cropped Thai flag loses both red stripes) and rows still align */
 .trip-flag{
 	display: block;
-	height: 9vh;
+	height: 7.6vh;
 	width: auto;
 	border: 1px solid rgba(54, 69, 79, 0.15);
 	border-radius: 0.25vw;
@@ -672,67 +674,13 @@ a.project-card:hover::after{
 .trip-name{
 	font-weight: bold;
 	color: var(--font);
-	font-size: 1.9vw;
-	margin-top: 2.4vh;
-}
-
-/* Home-page teaser linking to /trips */
-.trips-teaser{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 2vw;
-	box-sizing: border-box;
-	width: 70vw;
-	margin: 4vh auto 0;
-	text-align: left;
-	color: var(--font);
-	background: white;
-	border-radius: 0.5vw;
-	padding: 3.5vh 2vw;
-	box-shadow: 0 0.35vh 0.35vh rgba(0, 0, 0, 0.3);
-	transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.trips-teaser:hover{
-	transform: translateY(-0.6vh);
-	box-shadow: 0 1vh 1.2vh rgba(0, 0, 0, 0.2);
-}
-
-.trips-teaser:focus-visible{
-	outline: 2px solid var(--font);
-	outline-offset: 3px;
-}
-
-.trips-teaser-flags{
-	display: flex;
-	flex-shrink: 0;
-	align-items: center;
-}
-
-.trips-teaser-flags img{
-	width: 3.4vw;
-	height: 2.2vw;
-	object-fit: cover;
-	border-radius: 0.2vw;
-	box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.25);
-	margin-left: -0.8vw;
-}
-
-.trips-teaser-flags img:first-child{
-	margin-left: 0;
+	font-size: 1.6vw;
+	margin-top: 2vh;
 }
 
 @media only screen and (max-width: 900px){
 	.trips-grid{
-		grid-template-columns: repeat(2, 40vw);
-	}
-
-	.trips-teaser{
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 2vh;
-		width: 86vw;
+		grid-template-columns: repeat(2, 34vw);
 	}
 
 	.exp-grid{
