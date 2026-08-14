@@ -44,6 +44,11 @@
 	src: url("fonts/mg.ttf");
 }
 
+@font-face{
+	font-family: "roboto-slab";
+	src: url("fonts/Roboto_Slab/static/RobotoSlab-Regular.ttf");
+}
+
 /* Keyframes */
 
 @keyframes move-twink-back {
@@ -187,14 +192,39 @@ a {
 #container{
 	width: 100vw;
 	height: 100vh;
+	/* Nudges the whole hero stack down; raise/lower to move ANALYTICAL. */
+	box-sizing: border-box;
+	padding-top: 8vh;
 	z-index: -1;
 	/*background: var(--bg);*/
 	/*background: url("images/bg");*/
 	background-position: center;
 	background-size: cover;
 	display: flex;
+	flex-direction: column;
   	align-items: center;
   	justify-content: center;
+}
+
+#hero-row{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+}
+
+/* Social icons and the three cards share one line */
+#hero-bottom{
+	display: flex;
+	align-items: center;
+	width: 70vw;
+	margin-top: 5vh;
+}
+
+#hero-bottom .contact-row{
+	width: auto;
+	flex-shrink: 0;
+	align-items: center;
 }
 
 #content{
@@ -224,7 +254,7 @@ a {
 
 #picture{
 	width: 35vw;
-	height: 100vh;
+	height: auto;
 
 	/* Need this for image */
 	display: flex;
@@ -269,7 +299,7 @@ ul li::before{
 	margin-top: 5vh;
 }
 
-#about-title, #projects-title{
+#about-title, #projects-title, #trips-title{
 	position: relative;
 	font-family: "raleway-r";
 	text-align: left;
@@ -280,7 +310,7 @@ ul li::before{
 	/*font-weight: lighter;*/
 }
 
-#about-subtitle, #projects-subtitle{
+#about-subtitle, #projects-subtitle, #trips-subtitle{
 	font-family: "raleway-r", sans-serif;
 	text-align: left;
 	display: inline-block;
@@ -307,7 +337,7 @@ ul li::before{
 }
 
 
-#projects {
+#projects, #trips {
 	text-align: center;
 }
 
@@ -371,6 +401,9 @@ ul li::before{
 }
 
 .desc-image{
+	/* block, not inline — an inline img sits on the text baseline and adds
+	   ~4.5px of descender space, misaligning rows against .desc-wordmark */
+	display: block;
 	width: 240px;
 	height: 170px;
 	object-fit: contain;
@@ -379,6 +412,24 @@ ul li::before{
 
 .desc-image.photo{
 	object-fit: cover;
+}
+
+/* Portrait source in a landscape box: bias the crop up so the face survives */
+.desc-image.photo.top{
+	object-position: center 10%;
+}
+
+/* Text stand-in for experiences without a usable logo — bare type, no card */
+.desc-wordmark{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 240px;
+	height: 170px;
+	font-family: "roboto-slab", serif;
+	font-size: 2.2vw;
+	letter-spacing: -0.01em;
+	color: var(--font);
 }
 
 .desc-location{
@@ -397,6 +448,7 @@ ul li::before{
 }
 
 .project-card{
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	background: white;
@@ -409,6 +461,35 @@ ul li::before{
 .project-card:hover{
 	transform: translateY(-0.6vh);
 	box-shadow: 0 1vh 1.2vh rgba(0, 0, 0, 0.2);
+}
+
+/* Cards that link out; the arrow marks them as pressable */
+a.project-card{
+	color: inherit;
+	text-decoration: none;
+}
+
+a.project-card::after{
+	content: "\2197";
+	position: absolute;
+	top: 2.4vh;
+	right: 1.4vw;
+	font-size: 1vw;
+	color: grey;
+	transition: color 0.25s ease;
+}
+
+a.project-card:hover::after{
+	color: var(--contrast);
+}
+
+/* Bottom label for work that can't be linked */
+.project-note{
+	margin-top: auto;
+	padding-top: 2.5vh;
+	font-size: 0.85vw;
+	font-style: italic;
+	color: grey;
 }
 
 .project-name{
@@ -532,7 +613,128 @@ ul li::before{
 	outline-offset: 3px;
 }
 
+/* TRIPS */
+/* The subpage is a single centred block, unlike the left-aligned home sections */
+.subpage #trips-title{
+	justify-content: center;
+	text-align: center;
+}
+
+.subpage #trips-subtitle{
+	text-align: center;
+}
+
+/* Only four tiles, so centre the block instead of letting it hang off the top */
+.subpage{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 84vh;
+	padding-top: 10vh;
+}
+
+/* Compact tiles sized to the flag, not full-width slabs */
+.trips-grid{
+	display: grid;
+	grid-template-columns: repeat(2, 30vw);
+	justify-content: center;
+	gap: 4vh 3vw;
+	margin: 4vh auto 0;
+}
+
+.trip-card{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background: white;
+	border-radius: 0.5vw;
+	padding: 4.4vh 2vw;
+	box-shadow: 0 0.35vh 0.35vh rgba(0, 0, 0, 0.3);
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.trip-card:hover{
+	transform: translateY(-0.6vh);
+	box-shadow: 0 1vh 1.2vh rgba(0, 0, 0, 0.2);
+}
+
+/* Equal height, natural width: every flag keeps its own proportions, so none
+   get cropped (a cropped Thai flag loses both red stripes) and rows still align */
+.trip-flag{
+	display: block;
+	height: 9vh;
+	width: auto;
+	border: 1px solid rgba(54, 69, 79, 0.15);
+	border-radius: 0.25vw;
+}
+
+.trip-name{
+	font-weight: bold;
+	color: var(--font);
+	font-size: 1.9vw;
+	margin-top: 2.4vh;
+}
+
+/* Home-page teaser linking to /trips */
+.trips-teaser{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2vw;
+	box-sizing: border-box;
+	width: 70vw;
+	margin: 4vh auto 0;
+	text-align: left;
+	color: var(--font);
+	background: white;
+	border-radius: 0.5vw;
+	padding: 3.5vh 2vw;
+	box-shadow: 0 0.35vh 0.35vh rgba(0, 0, 0, 0.3);
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.trips-teaser:hover{
+	transform: translateY(-0.6vh);
+	box-shadow: 0 1vh 1.2vh rgba(0, 0, 0, 0.2);
+}
+
+.trips-teaser:focus-visible{
+	outline: 2px solid var(--font);
+	outline-offset: 3px;
+}
+
+.trips-teaser-flags{
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+}
+
+.trips-teaser-flags img{
+	width: 3.4vw;
+	height: 2.2vw;
+	object-fit: cover;
+	border-radius: 0.2vw;
+	box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.25);
+	margin-left: -0.8vw;
+}
+
+.trips-teaser-flags img:first-child{
+	margin-left: 0;
+}
+
 @media only screen and (max-width: 900px){
+	.trips-grid{
+		grid-template-columns: repeat(2, 40vw);
+	}
+
+	.trips-teaser{
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2vh;
+		width: 86vw;
+	}
+
 	.exp-grid{
 		grid-template-columns: 1fr;
 		width: 86vw;
@@ -555,16 +757,23 @@ ul li::before{
 
 /*FUN FACTS CSS*/
 #ff {
-	display: inline-flex;
-	align-items: center;
+	display: flex;
+	align-items: stretch;
 	justify-content: space-between;
-	width: 100%;
+	gap: 1vw;
+	/* takes whatever the icons leave on the row */
+	flex: 1;
+	margin-left: 3vw;
+	/* was inherited from #about-content / #about before the cards moved into the hero */
+	font-size: 0.95vw;
+	font-weight: lighter;
 	text-align: center;
 }
 
 .ff-item {
 	display: flex;
-	width: 30%;
+	flex: 1;
+	min-width: 0;
 	border-radius: 0.5vw;
   box-shadow: 0 0.35vh 0.35vh rgba(0, 0, 0, 0.3);
   background: white;
