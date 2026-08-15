@@ -299,7 +299,7 @@ ul li::before{
 	margin-top: 5vh;
 }
 
-#about-title, #projects-title, #trips-title{
+#about-title, #projects-title{
 	position: relative;
 	font-family: "raleway-r";
 	text-align: left;
@@ -310,7 +310,7 @@ ul li::before{
 	/*font-weight: lighter;*/
 }
 
-#about-subtitle, #projects-subtitle, #trips-subtitle{
+#about-subtitle, #projects-subtitle{
 	font-family: "raleway-r", sans-serif;
 	text-align: left;
 	display: inline-block;
@@ -337,7 +337,7 @@ ul li::before{
 }
 
 
-#projects, #trips {
+#projects {
 	text-align: center;
 }
 
@@ -613,76 +613,7 @@ a.project-card:hover::after{
 	outline-offset: 3px;
 }
 
-/* TRIPS */
-/* The subpage is a single centred block, unlike the left-aligned home sections */
-.subpage #trips-title{
-	justify-content: center;
-	text-align: center;
-	font-size: 2.1vw;
-}
-
-.subpage #trips-subtitle{
-	text-align: center;
-	font-size: 1vw;
-}
-
-/* Only four tiles, so centre the block instead of letting it hang off the top */
-.subpage{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	min-height: 84vh;
-	padding-top: 10vh;
-}
-
-/* Compact tiles sized to the flag, not full-width slabs */
-.trips-grid{
-	display: grid;
-	grid-template-columns: repeat(2, 25.5vw);
-	justify-content: center;
-	gap: 3.4vh 2.5vw;
-	margin: 3.4vh auto 0;
-}
-
-.trip-card{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	background: white;
-	border-radius: 0.5vw;
-	padding: 3.7vh 1.7vw;
-	box-shadow: 0 0.35vh 0.35vh rgba(0, 0, 0, 0.3);
-	transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.trip-card:hover{
-	transform: translateY(-0.6vh);
-	box-shadow: 0 1vh 1.2vh rgba(0, 0, 0, 0.2);
-}
-
-/* Equal height, natural width: every flag keeps its own proportions, so none
-   get cropped (a cropped Thai flag loses both red stripes) and rows still align */
-.trip-flag{
-	display: block;
-	height: 7.6vh;
-	width: auto;
-	border: 1px solid rgba(54, 69, 79, 0.15);
-	border-radius: 0.25vw;
-}
-
-.trip-name{
-	font-weight: bold;
-	color: var(--font);
-	font-size: 1.6vw;
-	margin-top: 2vh;
-}
-
 @media only screen and (max-width: 900px){
-	.trips-grid{
-		grid-template-columns: repeat(2, 34vw);
-	}
-
 	.exp-grid{
 		grid-template-columns: 1fr;
 		width: 86vw;
